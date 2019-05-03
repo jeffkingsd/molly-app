@@ -2,19 +2,16 @@ import React from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import './includes/bootstrap';
 import './App.css';
-import { NavComponent } from './components/nav/nav-component';
-import { FirstComponent } from './components/first.component'
-import { SecondComponent } from './components/second.component';
-import  SignInComponent  from './components/signin/signin.component';
-import { HomeComponent } from './components/home/home.component';
-import { MovieComponent } from './components/examples/movie.component';
-import { TicTacToeGameComponent } from './components/examples/tictactoe.component';
-import  ChuckNorrisJokesComponent from './components/chuck-norris/chucknorris.component';
-import  PokemonComponent  from './components/pokemon/pokemon.component';
-import { ReimbursementComponent } from './components/nested/reimbursement.component';
 import { Provider } from 'react-redux';
 import { store } from './Store';
-import clickerComponent from './components/clicker/clicker.component';
+import  NavComponent  from './components/nav/nav-component';
+import SignInComponent from './components/signin/signin.component';
+import ClaimComponent from './components/ers/claims/claim.component';
+import  ResolverComponent  from './components/ers/resolver/resolver.component';
+import  ProfileComponent  from './components/profile/profile.component';
+import  CreateComponent  from './components/profile/create.profile.component';
+import { HomeComponent } from './components/home/home.component';
+import  ReimbursementComponent  from './components/reim/reimbursement.component';
 
 const App: React.FC = () => {
   return (
@@ -23,16 +20,13 @@ const App: React.FC = () => {
       <NavComponent/>
       <main id="container">
       <Switch>
-      <Route path="/first" component={FirstComponent} />
-      <Route path="/second" component={SecondComponent} />
+      <Route path="/claims/new" component={ClaimComponent}/>
       <Route path="/sign-in" component={SignInComponent} />
       <Route path="/home" component={HomeComponent} />
+      <Route path="/claims/update" component={ResolverComponent}/>
       <Route path="/reimbursement" component={ReimbursementComponent} />
-      <Route path="/clicker" component={clickerComponent} />
-      <Route path="/movie" component={MovieComponent} />
-      <Route path="/tic-tac-toe" component={TicTacToeGameComponent} />
-      <Route path="/chuck-norris" component={ChuckNorrisJokesComponent} />
-      <Route path="/pokemon" component={PokemonComponent} />
+      <Route path="/profile" component={ProfileComponent}/>
+      <Route path="/create" component={CreateComponent} />
       <Route component={HomeComponent} />
       </Switch>
       </main>

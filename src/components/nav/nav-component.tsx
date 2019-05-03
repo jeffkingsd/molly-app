@@ -1,9 +1,21 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import freddylogo from '../../assets/freddylogo.png';
+import { User } from '../../model/user';
+import { IState } from '../../reducers';
+import { connect } from 'react-redux';
 
-export class NavComponent extends React.Component {
+
+interface INavProps {
+  currentUser: User
+}
+export class NavComponent extends React.Component<INavProps> {
+  constructor(props){
+    super(props)
+  }
+
   render() {
+    const currentUser = this.props.currentUser;
     return (
       <nav className="navbar navbar-toggleable-md navbar-expand-lg navbar-light bg-light display-front nav-pad">
         <div className="navbar-header c-pointer shift-left">
@@ -11,6 +23,7 @@ export class NavComponent extends React.Component {
             <img className="img-adjust-position rev-logo" src={freddylogo} alt="revature" />
           </Link>
         </div>
+        <div>{currentUser && currentUser.firstName}</div>
         <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample04" aria-controls="navbarsExample04" aria-expanded="false" aria-label="Toggle navigation">
           <span className="navbar-toggler-icon"></span>
         </button>
@@ -19,30 +32,30 @@ export class NavComponent extends React.Component {
             <li className="nav-item active">
               <Link to="/home" className="unset-anchor nav-link">Home</Link>
             </li>
-            <li className="nav-item active">
-              <Link to="/sign-in" className="unset-anchor nav-link">Sign In</Link>
-            </li>
-            <li className="nav-item active">
-              <Link to="/first" className="unset-anchor nav-link">First</Link>
-            </li>
-            <li className="nav-item active">
-              <Link to="/second" className="unset-anchor nav-link">Second</Link>
-            </li>
-            <li className="nav-item active">
-              <Link to="/clicker" className="unset-anchor nav-link">Clicker</Link>
-            </li>
+            {
+              currentUser
+                ? <li className="nav-item active">
+                <Link to="/profile" className="unset-anchor nav-link">Profile</Link>
+              </li>
+                : <></>
+            }
+            {
+              currentUser
+                ? <li className="nav-item active">
+                  <Link to="/sign-in" className="unset-anchor nav-link">Sign Out</Link>
+                </li>
+                : <li className="nav-item active">
+                  <Link to="/sign-in" className="unset-anchor nav-link">Sign In</Link>
+                </li>
+            }
             <li className="nav-item active dropdown">
-              <a className="nav-link dropdown-toggle pointer" id="examples-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Examples</a>
-              <div className="dropdown-menu" aria-labelledby="examples-dropdown">
-                <div className="dropdown-item"><Link to="/movies" className="unset-anchor nav-link active">Movies</Link></div>
-                <div className="dropdown-item"><Link to="/clicker" className="unset-anchor nav-link active">Clicker Game</Link></div>
-                <div className="dropdown-item"><Link to="/tic-tac-toe" className="unset-anchor nav-link active">Tic Tac Toe Game</Link></div>
-                <div className="dropdown-item"><Link to="/chuck-norris" className="unset-anchor nav-link active">Chuck Norris Jokes</Link></div>
-                <div className="dropdown-item"><Link to="/pokemon" className="unset-anchor nav-link active">Pokemon</Link></div>
+            <a className="nav-link dropdown-toggle pointer" id="examples-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="">ERS</a>
+              <div className="dropdown-menu" aria-labelledby="ERS-dropdown">
+                <div className="dropdown-item"><Link to="/reimbursement" className="unset-anchor nav-link active">View Claims</Link></div>
+                <div className="dropdown-item"><Link to="/claims/new" className="unset-anchor nav-link active">Submit Claim</Link></div>
+                <div className="dropdown-item"><Link to="/claims/update" className="unset-anchor nav-link active">Update claims</Link></div>
+                <div className="dropdown-item"><Link to="/claims/ban" className="unset-anchor nav-link active">Block users</Link></div>
               </div>
-            </li>
-            <li className="nav-item active">
-              <Link to="/reimbursement" className="unset-anchor nav-link">Nested</Link>
             </li>
           </ul>
         </div>
@@ -50,3 +63,11 @@ export class NavComponent extends React.Component {
     );
   }
 }
+
+const mapStateToProps = (state: IState) => {
+  return {
+    currentUser: state.auth.currentUser
+  }
+}
+
+export default connect(mapStateToProps)(NavComponent);

@@ -1,13 +1,21 @@
+import { Role } from "./role";
+
 export class User {
+    userId: number;
     username: string;
     password: string;
-    userId: number;
-    name: string;
+    firstName: string;
+    lastName: string;
+    email: string;
+    role?: Role;
 
-    constructor(username= '', password= '', userId= 0, name= '') {
+    constructor(userId = 0, username = '', password = '', firstName = '', lastName = '', email = '', role = new Role()) {
+        this.userId = userId;
         this.username = username;
         this.password = password;
-        this.userId = userId;
-        this.name = name;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.role = role;
     }
 }

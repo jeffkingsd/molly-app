@@ -1,23 +1,23 @@
 export class Authorinfo {
-    reimbursementId: number;
-    author: number;
+    reimbursement_id: number;
+    full_name: string;
     amount: number;
-    dateSubmitted: string;
-    dateResolved: string;
+    date_submitted: string;
+    date_resolved: string;
     description: string;
-    resolver: number;
-    statusId: number;
-    typeId: number;
+    resolver_name: string;
+    status: string;
+    type: string;
 
-    constructor(reimbusementId = 0, author = 0, amount = 0, dateSubmitted = '', dateResolved = '', description ='', resolver = 0, statusId = 0, typeId =0){
-        this.reimbursementId = reimbusementId;
-        this.author = author;
+    constructor(reimbusementId = 0, fullname ='', amount = 0, dateSubmitted = ' ', dateResolved = '', description = '', resolver = '', statusId = '', typeId = ''){
+        this.reimbursement_id = reimbusementId;
+        this.full_name = fullname;
         this.amount = amount;
-        this.dateSubmitted = dateSubmitted;
-        this.dateResolved = dateResolved;
+        this.date_submitted = dateSubmitted;
+        this.date_resolved = dateResolved;
         this.description = description;
-        this.resolver = resolver;
-        this.statusId = statusId;
-        this.typeId = typeId;
+        this.resolver_name = resolver;
+        this.status = statusId;
+        this.type = typeId;
     }
 }

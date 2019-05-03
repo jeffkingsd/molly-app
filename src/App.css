@@ -23,14 +23,6 @@
   color: #61dafb;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
 .container {
   box-flex: center;
 }
@@ -46,9 +38,12 @@
 .margin-nav {
   margin-right: 2em
 }
+.navbar-light .navbar-nav .active .nav-link {
+  color:rgba(82, 218, 93, 0.863)
+}
 
 .navbar-light .navbar-nav .nav-link:focus, .navbar-light .navbar-nav .nav-link:hover {
-  color: rgba(0,0,0,.7);
+  color: rgba(230, 0, 0, 0.7);
 }
 
 .navbar-expand-md .navbar-nav .nav-link {
@@ -57,7 +52,7 @@
 }
 
 .bg-light {
-  background-color: #3a3a3a !important;
+  background-color: #4e4e4e !important;
 }
 
 nav {
@@ -71,9 +66,9 @@ nav {
 #examples-dropdown {
   cursor: pointer;
 }
-/**************
-  Login-System
- *************/
+/***************************************
+ Login-System
+ ***************************************/
  .logo {
   text-align: center;
   font-size: 50px;
@@ -90,7 +85,7 @@ html, body {
 }
 body {
   padding: 25px;
-  color: whitesmoke;
+  color: rgb(88, 125, 246);
   background-image: url(https://proxy.duckduckgo.com/iu/?u=https%3A%2F%2Forig00.deviantart.net%2F64e3%2Ff%2F2013%2F183%2F5%2F8%2Fseamless_fabric_pattern_dark_by_shandya-d6br6zb.png&f=1);
 }
 
@@ -99,7 +94,7 @@ main {
   margin-top: 130px;
   padding: 0;
   display: flex;
-  align-items: center;
+
   justify-content: center;
 }
 
@@ -172,4 +167,21 @@ bottom: 0;
 height: 25px;
 width: 100%;
 overflow: hidden;
+}
+
+.row{
+  color: black;
+}
+
+.Spin-freddy-img {
+  width: 500px;
+  height: 500px;
+}
+
+.create-back {
+  background-color: darkgrey;
+  padding: 20px;
+  border: 5px solid black;
+  border-radius: 10px;
+  opacity: .66;
 }

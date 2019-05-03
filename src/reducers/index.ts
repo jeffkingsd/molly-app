@@ -1,39 +1,34 @@
 import { combineReducers } from "redux";
-import { clickerReducer } from "./clicker.reducer";
-import { chuckNorrisReducer } from "./chuck-norris.reducer";
-import { PokemonReducer } from "./pokemon.reducer";
 import { User } from "../model/user";
 import { authReducer } from "./auth.reducer";
+import { claimReducer } from "./claim.reducer";
+import { resolveReducer } from "./resolve.reducer";
+import { Role } from "../model/role";
+
+
+export interface IResolveState {
+  displayMessage?: string
+}
+
+export interface IClaimState {
+  displayMessage?: string
+}
 
 export interface IAuthState {
+  role?: Role,
   currentUser?: User,
   errorMessage?: string
 }
 
-export interface IPokemonState {
-    name: string,
-    id: number,
-    img: ''
-}
-export interface IClickerState {
-  clicks: number
-}
-
-export interface IChuckNorrisState {
-  joke: string,
-  proccessingNewJoke: boolean
-}
-
 export interface IState {
-  clicker: IClickerState,
-  chuckNorris: IChuckNorrisState,
-  pokemon: IPokemonState
-  auth: IAuthState
+  auth: IAuthState,
+  claim: IClaimState,
+  resolve: IResolveState
+
 }
 
 export const state = combineReducers<IState>({
-  clicker: clickerReducer,
-  chuckNorris: chuckNorrisReducer,
-  pokemon: PokemonReducer,
-  auth: authReducer
+  auth: authReducer,
+  claim: claimReducer,
+  resolve: resolveReducer
 })
